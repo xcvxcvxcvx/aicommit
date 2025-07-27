@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bytes"
 	"fmt"
 	"os"
 	"os/exec"
@@ -16,17 +15,8 @@ func GenerateGit() string {
 		os.Exit(1)
 	}
 
-	lines := bytes.Split(out, []byte{'\n'})
-	var hasContent bool
-	for _, line := range lines {
-		trimmed := bytes.TrimSpace(line)
-		if len(trimmed) > 0 && !bytes.HasPrefix(trimmed, []byte("#")) {
-			hasContent = true
-			break
-		}
-	}
-
-	if !hasContent {
+	action := os.Getenv("GIT_REFLOG_ACTION")
+	if action != "" && action != "commit" {
 		os.Exit(0)
 	}
 

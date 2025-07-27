@@ -24,3 +24,4 @@ exec "$(git rev-parse --show-toplevel)/aicommit" "$@"
 
 Add your gemini key:
 `export GEMINI_API_KEY="{key}"`
+

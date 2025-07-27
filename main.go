@@ -13,6 +13,16 @@ func main() {
 		os.Exit(1)
 	}
 
+	source := ""
+
+	if len(args) >= 3 {
+		source = args[2]
+	}
+
+	if source != "" {
+		os.Exit(0)
+	}
+
 	commitMsgFile := args[1]
 
 	prompt, err := GetPrompt()
